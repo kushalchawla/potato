@@ -93,9 +93,21 @@
 
     "annotation_schemes": [      
         {
-            "annotation_type": "text",
-            "name": "textbox_input", 
-            "description": "Enter your response. If you are unsure, give your best guess.",          
+            "annotation_type": "likert",
+            "name": "likert_input", 
+            "description": "Enter your response. If you are unsure, give your best guess.",
+            # The min and max labels are text shown at each end of the scale
+            "min_label": "Least consistent",
+            "max_label": "Most consistent",
+
+            # How many scale points to show
+            "size": 5,
+            
+            # If true, numbers [1-len(labels)] will be bound to each
+            # label. Check box annotations with more than 10 are not supported
+            # with this simple keybinding and will need to use the full item
+            # specification to bind all labels to keys.
+            "sequential_key_binding": True, 
         },
     ],
 

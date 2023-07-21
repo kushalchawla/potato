@@ -93,9 +93,19 @@
 
     "annotation_schemes": [      
         {
-            "annotation_type": "text",
-            "name": "textbox_input", 
-            "description": "Enter your response. If you are unsure, give your best guess.",          
+            "annotation_type": "radio",
+            "name": "radio_input", 
+            "description": "Enter your response. If you are unsure, give your best guess.",
+            "labels": [
+              "no-need",
+              "elicit-pref",
+              "vouch-fairness"
+            ],
+            # If true, numbers [1-len(labels)] will be bound to each
+            # label. Check box annotations with more than 10 are not supported
+            # with this simple keybinding and will need to use the full item
+            # specification to bind all labels to keys.
+            "sequential_key_binding": True, 
         },
     ],
 
