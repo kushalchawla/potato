@@ -3,7 +3,7 @@
 
     "server_name": "potato annotator",
 
-    "annotation_task_name": "Compute Points Scored by Alice",
+    "annotation_task_name": "Points Scored by Alice",   
 
     # Potato will write the annotation file for all annotations to this
     # directory, as well as per-annotator output files and state information
@@ -39,25 +39,65 @@
       "users": [  ],
     },
 
+    #defining the ways annotators entering the annotation system
+    "login": {
+      "type": 'url_direct',    #can be 'password' or 'url_direct'
+      "url_argument": 'PROLIFIC_PID' # when the login type is set to 'url_direct', 'url_argument' must be setup for a direct url argument login
+    },
+
+    #password requirement will be removed if this is added, the associated function is still under development
+    "require_no_password": True,
+
+    #the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
+    "jumping_to_id_disabled": False,
+
+    #the navigation bar will be hidden to the annotators if "hide_navbar" is True
+    "hide_navbar": True,
+
+    # define the surveyflow of the system, set up the pages before and after the data annotation page
+    "surveyflow": {
+      "on": True,
+      "order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
+      "pre_annotation": ['surveyflow/intro.jsonl', 'surveyflow/examples.jsonl','surveyflow/consent.jsonl', 'surveyflow/instruction.jsonl', 'surveyflow/prestudy_intro.jsonl'],
+      "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
+      "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
+      "post_annotation": ['surveyflow/experience.jsonl', 'surveyflow/end.jsonl'],
+      # If set, we will automatically generate testing questions similar to the annotation instances, but explicitly ask the annotator to choose one option
+      "testing": [],
+    },
+
+    "prestudy": {
+        "on": True,
+        "minimum_score": 0.8,
+        "groundtruth_key": 'whether_match',
+        "question_key": 'Whether the presented sentences are discussing the same scientific finding',
+        "answer_mapping": {'Yes': True, 'No': False},
+        "pass_page": 'surveyflow/prestudy_pass.jsonl',
+        "fail_page": 'surveyflow/prestudy_fail.jsonl'
+    },
+
+    "automatic_assignment": {
+      #whether do automatic task assignment for annotators, default False.
+      "on": True,
+      "output_filename": 'task_assignment.json',
+      "sampling_strategy:": 'random',
+      "labels_per_instance": 5,
+      "instance_per_annotator": 5,
+      "test_question_per_annotator": 0, # you must set up the test question in surveyflow to use this function
+
+      "users": [  ],
+    },
+
     # How many seconds do you want the annotators spend on each instance, after
     # that, an alert will be sent per alert_time_each_instance seconds.
     "alert_time_each_instance": 10000000,
 
     "annotation_schemes": [      
         {
-            "annotation_type": "multiselect",
-            "name": "answer", 
-            "description": "If you are unsure, give your best guess.",
-            "labels": [
-               "blue", "maize", "green", "white"
-            ],
-
-            # If true, numbers [1-len(labels)] will be bound to each
-            # label. Check box annotations with more than 10 are not supported
-            # with this simple keybinding and will need to use the full item
-            # specification to bind all labels to keys.
-            "sequential_key_binding": True,            
-        },       
+            "annotation_type": "text",
+            "name": "textbox_input", 
+            "description": "Enter your response. If you are unsure, give your best guess.",          
+        },
     ],
 
     # The html that changes the visualiztation for your task. Change this file
