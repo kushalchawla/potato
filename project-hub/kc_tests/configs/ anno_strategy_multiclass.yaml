@@ -3,12 +3,12 @@
 
     "server_name": "potato annotator",
 
-    "annotation_task_name": "Points Scored by Alice",   
+    "annotation_task_name": "Annotate Intent in the Utterance (Multiclass)",
 
     # Potato will write the annotation file for all annotations to this
     # directory, as well as per-annotator output files and state information
     # necessary to restart annotation.
-    "output_annotation_dir": "annotation_output/deal_points/",
+    "output_annotation_dir": "annotation_output/anno_strategy_multiclass/",
 
     # The output format for the all-annotator data. Allowed formats are:
     # * jsonl
@@ -23,7 +23,7 @@
     "annotation_codebook_url": "",
 
     "data_files": [
-       "data/input_deal_points.jsonl"
+       "data/input_anno_strategy_multiclass.jsonl"
     ],
 
     "item_properties": {
@@ -58,7 +58,7 @@
     "surveyflow": {
       "on": True,
       "order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
-      "pre_annotation": ['surveyflow/intro.jsonl', 'surveyflow/examples.jsonl','surveyflow/consent.jsonl', 'surveyflow/instruction.jsonl', 'surveyflow/prestudy_intro.jsonl'],
+      "pre_annotation": ['surveyflow/consent.jsonl', 'surveyflow/intro.jsonl', 'surveyflow/prestudy_intro.jsonl'],
       "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
       "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
       "post_annotation": ['surveyflow/experience.jsonl', 'surveyflow/end.jsonl'],
@@ -70,7 +70,7 @@
         "on": True,
         "minimum_score": 0.8,
         "groundtruth_key": 'whether_match',
-        "question_key": 'Whether the presented sentences are discussing the same scientific finding',
+        "question_key": 'textbox_input',
         "answer_mapping": {'Yes': True, 'No': False},
         "pass_page": 'surveyflow/prestudy_pass.jsonl',
         "fail_page": 'surveyflow/prestudy_fail.jsonl'

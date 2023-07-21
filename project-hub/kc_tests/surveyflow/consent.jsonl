@@ -1,0 +1,2 @@
+{"id":"1","text":"Consent Form","schema": "pure_display", "choices": ["Please review the following informed consent document. If you agree, check &#39;I agree&#39; to proceed.<br /> <br /> <iframe height='480' src='https://drive.google.com/file/d/1tnB0ml83ynQTC42ECVj822xWj-WrS6Qy/preview' width='640'></iframe>"]}
+{"id":"2","text":"I understand and accept the terms.","schema": "radio", "choices": ["Yes", "No"], "label_requirement": {"right_label":["Yes"]}}
