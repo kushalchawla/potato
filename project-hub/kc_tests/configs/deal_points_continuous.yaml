@@ -58,7 +58,7 @@
     "surveyflow": {
       "on": True,
       "order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
-      "pre_annotation": ['surveyflow/consent.jsonl', 'surveyflow/intro.jsonl', 'surveyflow/prestudy_intro.jsonl'],
+      "pre_annotation": ['surveyflow/consent.jsonl', 'surveyflow/deal_points_continuous_intro.jsonl', 'surveyflow/prestudy_intro.jsonl'],
       "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
       "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
       "post_annotation": ['surveyflow/experience.jsonl', 'surveyflow/end.jsonl'],
@@ -79,13 +79,12 @@
     "automatic_assignment": {
       #whether do automatic task assignment for annotators, default False.
       "on": True,
-      "output_filename": 'task_assignment.json',
+      "output_filename": 'deal_points_task_assignment.json',
       "sampling_strategy:": 'random',
-      "labels_per_instance": 5,
-      "instance_per_annotator": 5,
+      "labels_per_instance": 3,
+      "instance_per_annotator": 2,
       "test_question_per_annotator": 0, # you must set up the test question in surveyflow to use this function
 
-      "users": [  ],
     },
 
     # How many seconds do you want the annotators spend on each instance, after

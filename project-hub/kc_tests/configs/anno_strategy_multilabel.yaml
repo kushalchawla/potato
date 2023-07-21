@@ -58,7 +58,7 @@
     "surveyflow": {
       "on": True,
       "order" : ['pre_annotation', 'prestudy_passed', 'prestudy_failed', 'post_annotation'],
-      "pre_annotation": ['surveyflow/consent.jsonl', 'surveyflow/intro.jsonl', 'surveyflow/prestudy_intro.jsonl'],
+      "pre_annotation": ['surveyflow/consent.jsonl', 'surveyflow/anno_strategy_multilabel_intro.jsonl', 'surveyflow/prestudy_intro.jsonl'],
       "prestudy_passed": ['surveyflow/prestudy_pass.jsonl'],
       "prestudy_failed": ['surveyflow/prestudy_fail.jsonl'],
       "post_annotation": ['surveyflow/experience.jsonl', 'surveyflow/end.jsonl'],
