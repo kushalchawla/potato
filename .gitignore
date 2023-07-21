@@ -51,6 +51,7 @@ coverage.xml
 docs/_build/
 
 # Local
-*/annotation_output/*
-*/templates/*
+*annotation_output*
+*templates*
 =*
+*user_config.json*
