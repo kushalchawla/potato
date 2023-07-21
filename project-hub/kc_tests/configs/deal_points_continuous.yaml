@@ -79,7 +79,7 @@
     "automatic_assignment": {
       #whether do automatic task assignment for annotators, default False.
       "on": True,
-      "output_filename": 'deal_points_task_assignment.json',
+      "output_filename": 'deal_points_continuous_task_assignment.json',
       "sampling_strategy:": 'random',
       "labels_per_instance": 3,
       "instance_per_annotator": 2,
